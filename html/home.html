@@ -68,7 +68,7 @@
                   <use xlink:href="#icon-dangan"></use>
                 </svg>我的档案
               </h2>
-              <h2 onclick="" id="dagl">
+              <h2 onclick="loadXMLDoc(1)" id="dagl">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-dangan-"></use>
                 </svg>档案管理</h2>
@@ -194,10 +194,10 @@
 </html>
 <script type="text/javascript">
 
-  $(document).ready(function () {
-    $("#dagl").click(function () {
-      $("#a1").load("dangangl.html");
-    });
+  // $(document).ready(function () {
+  //   $("#dagl").click(function () {
+  //     $("#a1").load("dangangl.html");
+  //   });
 
 
     $(".menu h2").click(function () {
@@ -321,7 +321,7 @@
       window.location.href = 'index.html';
       // }
     })
-  });
+  // });
 </script>
 <style>
   .curr {
@@ -375,6 +375,9 @@
 
   #a1 {
     overflow: scroll;
+  }
+  a{
+    cursor: pointer;
   }
 </style>
 <style type="text/css">
