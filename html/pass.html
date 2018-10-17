@@ -1,0 +1,31 @@
+<div style="margin-top: 10px;">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">原密码</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">新密码</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">确认密码</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control">
+      </div>
+    </div>
+    <button type="button" class="btn btn-default btn-success pass" style="margin-left: 20%;" onclick="window.location.href='index.html';">保存</button>
+  </form>
+</div>
+<script>
+  console.log(1)
+  $('button.pass').click(function(){
+    // confirm('修改成功!');
+    location.href('index.html');
+
+  });
+</script>

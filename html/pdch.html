@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改教职工档案信息</title>
+    <link rel="icon" href="../img/人事.png">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+
+
+    <!-- <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+</head>
+
+<body>
+    <div class="box">
+    <h3>修改教职工档案信息</h3>
+    <form id="formDemo" class="layui-form" name="myform">
+        <table class="table-bordered" lay-even>
+            <!-- <colgroup>
+                <col width="100">
+                <col width="200">
+                <col>
+            </colgroup> -->
+            <tbody>
+                <tr>
+                    <th>
+                        <span style="color:red;">*</span>工号</th>
+                    <td>
+                        <input tyep="text" name="工号" required>
+                    </td>
+                    <th>
+                        <span style="color:red;">*</span>姓名</th>
+                    <td>
+                        <input tyep="text" name="姓名" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>性别</th>
+                    <td>
+                        <select name="性别" id="sex" style="width:78%;">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </td>
+                    <th>婚姻状况</th>
+                    <td>
+                        <select name="婚姻状况" id="hyzk" style="width:78%;">
+                            <option value="未婚">未婚</option>
+                            <option value="已婚">已婚</option>
+                            <option value="离异">离异</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>出生年月</th>
+                    <td>
+                        <input tyep="text" name="出生年月" id="csny">
+                    </td>
+                    <th>籍贯</th>
+                    <td>
+                        <input tyep="text" name="籍贯">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>民族</th>
+                    <td>
+                        <input tyep="text" name="民族">
+                    </td>
+                    <th>政治面貌</th>
+                    <td>
+                        <input tyep="text" name="政治面貌">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>身份证号</th>
+                    <td>
+                        <input tyep="text" name="身份证号">
+                    </td>
+                    <th>参加工作时间</th>
+                    <td>
+                        <input tyep="text" name="参加工作时间" id="workt">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>工作年限</th>
+                    <td>
+                        <input tyep="text" name="工作年限">
+                    </td>
+                    <th>学历</th>
+                    <td>
+                        <input tyep="text" name="学历">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>毕业院校</th>
+                    <td>
+                        <input tyep="text" name="毕业院校">
+                    </td>
+                    <th>毕业时间</th>
+                    <td>
+                        <input tyep="text" name="毕业时间" id="bysj">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>特长</th>
+                    <td>
+                        <input tyep="text" name="特长">
+                    </td>
+                    <th>爱好</th>
+                    <td>
+                        <input tyep="text" name="爱好">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>电子邮件</th>
+                    <td>
+                        <input tyep="text" name="电子邮件">
+                    </td>
+                    <th>联系地址</th>
+                    <td>
+                        <input tyep="text" name="联系地址">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>联系电话</th>
+                    <td>
+                        <input tyep="text" name="联系电话">
+                    </td>
+                    <th>
+                        <span style="color:red;">*</span>入职日期</th>
+                    <td>
+                        <input tyep="text" name="入职日期" id=rzrq required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <span style="color:red;">*</span>部门</th>
+                    <td>
+                        <input tyep="text" name="部门" required>
+                    </td>
+                    <th>岗位</th>
+                    <td>
+                        <input tyep="text" name="岗位">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>基本工资</th>
+                    <td>
+                        <input tyep="text" name="基本工资">
+                    </td>
+                    <th>岗位工资</th>
+                    <td>
+                        <input tyep="text" name="岗位工资">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>绩效工资</th>
+                    <td>
+                        <input tyep="text" name="绩效工资">
+                    </td>
+                    <th>工资卡开户行</th>
+                    <td>
+                        <input tyep="text" name="工资卡开户行">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>工资卡帐号</th>
+                    <td>
+                        <input tyep="text" name="工资卡帐号">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <button id="btn" class="btn btn-success"  style="margin: 10px;">保存</button>
+
+    </form>
+</div>
+</body>
+
+</html>
+<script>
+    var storage = window.localStorage.getItem('temp');
+    storage = storage ? JSON.parse(storage) : [];
+    var loc = location.href;
+    var n1 = loc.length;//地址的总长度
+    var n2 = loc.indexOf("=");//取得=号的位置
+    var id = decodeURI(loc.substr(n2 + 1, n1 - n2));//从=号后面的内容
+    console.log(storage[id])
+    Object.keys(storage[id]).map(function (key) {
+        console.log(1)
+        $('#formDemo input').filter(function () {
+            console.log(key)
+            return key == this.name;
+            console.log(this.name)
+            console.log(storage[id][key])
+        }).val(storage[id][key]);
+    });
+    $('#sex').val(storage[id]['性别'])
+    $('#hyzk').val(storage[id]['婚姻状况'])
+
+    $(function () {
+        $("#csny").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+        $("#workt").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+        $("#bysj").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+        $("#rzrq").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+
+    });
+    $('#btn').click(function () {
+        // console.log($('#formDemo').serializeJSON());
+        // console.log(JSON.stringify($('#formDemo').serializeJSON()));
+        // return JSON.stringify($('#formDemo').serializeJSON());
+
+        var storage = window.localStorage.getItem('temp');
+        storage = storage ? JSON.parse(storage) : [];
+        console.log(storage[id])
+        storage.splice(id, 1, $('#formDemo').serializeJSON());
+        // storage.push($('#formDemo').serializeJSON());
+        console.log(storage)
+        window.localStorage.setItem('temp', JSON.stringify(storage));
+        // alert('修改成功！');
+        window.close();
+        // self.opener.location.reload();
+        opener.loadXMLDoc(1)
+    });
+</script>
+
+<style>
+    body {
+        margin: 10px;
+        background: url(../img/bg2.jpg);
+        background-size: cover;
+    }
+    .box {
+        width: 50%;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.97);
+        padding: 10px;
+        border-radius: 5px;
+    }
+    table{
+        width: 100%;
+
+    }
+</style>

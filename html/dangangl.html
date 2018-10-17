@@ -1,0 +1,203 @@
+<div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-md-3">
+        <ul class="nav nav-list well">
+          <li class="nav-header">
+            广东工业大学
+          </li>
+          <li class="divider"></li>
+          <li class="nav-header">
+            单位（党政、群团、后勤）
+          </li>
+          <li>
+            <a href="#">人事处</a>
+          </li>
+          <li>
+            <a href="#">财务处</a>
+          </li>
+          <li>
+            <a href="#">教务处</a>
+          </li>
+          <li>
+            <a href="#">后勤部</a>
+          </li>
+          <!-- <li>
+            <a href="#">招生办</a>
+          </li> -->
+          <li>
+            <a href="#">宣传部</a>
+          </li>
+          <li class="nav-header">
+            单位（教学、研究、教辅）
+          </li>
+          <li>
+            <a href="#">机电工程学院</a>
+          </li>
+          <li>
+            <a href="#">自动化学院</a>
+          </li>
+          <!-- <li>
+            <a href="#">轻工化工学院</a>
+          </li> -->
+          <li>
+            <a href="#">信息工程学院</a>
+          </li>
+          <li>
+            <a href="#">土木与交通工程学院</a>
+          </li>
+          <li>
+            <a href="#">管理学院</a>
+          </li>
+          <li>
+            <a href="#">计算机学院</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <form class="form-search">
+          <input class="input-medium search-query" type="text" />
+          <!-- <button type="submit" class="btn">查找</button> -->
+          <button type="button" class="btn btn-primary">查找</button>
+
+          <a href="pjia.html" target="_blank">
+            <button type="button" class="btn btn-primary">增加</button>
+          </a>
+          <!-- <button type="button" class="btn btn-primary">删除</button> -->
+        </form>
+        <table class="table" id="tr" style="text-align: center;">
+          <tr>
+            <td>序号</td>
+            <!-- <td>选择</td> -->
+            <td>工号</td>
+            <td>姓名</td>
+            <td>部门</td>
+            <td>岗位</td>
+            <!-- <td>职务</td> -->
+            <td>操作</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 按钮触发模态框 -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">删除后将无法恢复，确认要删除吗？</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" onclick="deletep()">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal -->
+</div>
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      type: "GET",
+      url: "../json/renshi.json",
+      data: {
+        method: "query"
+      }, dataType: "json",//返回的数据类型 
+      success: function (data) {
+        djson = JSON.stringify(data);
+        if (localStorage.getItem("temp") == null) localStorage.setItem("temp", djson); //会返回1,2,3
+      }
+    });
+
+    var data = window.localStorage.getItem('temp');
+    data = data ? JSON.parse(data) : [];
+    console.log(data.length)
+    console.log(data)
+    var html = '';
+    for (var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html
+      html = html + '<tr>';
+      html = html + '<td>' + (i + 1) + '</td>';
+      // html = html + '<td><input type="checkbox" value=""></td>';
+      html = html + '<td>' + data[i].工号 + '</td>';
+      html = html + '<td>' + data[i].姓名 + '</td>';
+      html = html + '<td>' + data[i].部门 + '</td>';
+      html = html + '<td>' + data[i].岗位 + '</td>';
+      // html = html + '<td>' + data[i].职务 + '</td>';
+      html = html + '<td><a onclick="show(' + i + ')">查看</a> <a onclick="change(' + i + ')">修改</a> <a data-toggle="modal" data-target="#myModal"  data-groupClassId="' + i + '">删除</a></td>';
+      html = html + '</tr>';
+    }
+    // $('#tr').html(html);//通过jquery方式获取table，并把tr,td的html输出到table中	
+    $(".table").append(html);
+
+
+
+    $(".col-md-3 a").click(function () {
+      var bumen = $(this).html();
+      // console.log(bumen);
+      $(".table tr:gt(0)").remove();
+      var html = '';
+      var j = 1;
+      var data = window.localStorage.getItem('temp');
+      data = data ? JSON.parse(data) : [];
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {//循环json对象，拼接tr,td的html     
+        if (bumen === data[i].部门) {
+          // console.log(data)
+          html = html + '<tr id=' + i + '>';
+          html = html + '<td>' + j + '</td>';
+          // html = html + '<td><input type="checkbox" value=""></td>';
+          html = html + '<td>' + data[i].工号 + '</td>';
+          html = html + '<td>' + data[i].姓名 + '</td>';
+          html = html + '<td>' + data[i].部门 + '</td>';
+          html = html + '<td>' + data[i].岗位 + '</td>';
+          html = html + '<td><a onclick="show(' + i + ')">查看</a> <a onclick="change(' + i + ')">修改</a> <a data-toggle="modal" data-target="#myModal" data-groupClassId="' + i + '">删除</a></td>';
+          html = html + '</tr>';
+          j++;
+        }
+      }
+      $(".table").append(html);
+      if (j == 1) {
+        console.log($(".table tr:last").html());
+        $(".table").append('<tr><td colspan="8">没有查到符合条件的数据。</tr>');
+        console.log($(".table tr:last").html());
+      }
+    });
+
+    function show(i) {
+      // var s = document.getElementById("txt");
+      window.open("pdetail.html?" + "id=" + i);
+    }
+
+    function change(i) {
+      window.open("pdch.html?" + "id=" + i);
+    }
+
+    $('#myModal').on('show.bs.modal', function (event) {
+      var groupClassId = $(event.relatedTarget).attr('data-groupClassId'); //获取id 后这里可以直接用
+      console.log(groupClassId);
+      $("#myModal").attr('data-groupClassId', groupClassId);  //给此弹框绑定 后面函数可以直接用
+    });
+
+    function deletep() {
+      var i = $("#myModal").attr('data-groupClassId');
+      var attr = localStorage.getItem('temp');
+      attr = attr ? JSON.parse(attr) : [];
+      console.log(attr.length)
+      attr.splice(i, 1);
+      console.log(attr.length)
+      localStorage.setItem('temp', JSON.stringify(attr))
+      loadXMLDoc(1)
+      $("#myModal").modal('hide');
+    }
+  });
+</script>
+<style>
+  a {
+    cursor: pointer;
+  }
+</style>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增加教职工考勤信息</title>
+    <link rel="icon" href="../img/人事.png">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+
+
+    <!-- <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+</head>
+
+<body>
+    <div class="box">
+        <h3>增加教职工考勤信息</h3>
+        <form id="formDemo" class="layui-form" name="myform">
+            <table class="table-bordered" lay-even>
+                <!-- <colgroup>
+                <col width="100">
+                <col width="200">
+                <col>
+            </colgroup> -->
+                <tbody>
+                    <tr>
+                        <th>
+                            <span style="color:red;">*</span>工号</th>
+                        <td>
+                            <input tyep="text" name="工号" required>
+                        </td>
+                        <th>
+                            <span style="color:red;">*</span>姓名</th>
+                        <td>
+                            <input tyep="text" name="姓名" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <span style="color:red;">*</span>考勤时间</th>
+                        <td>
+                            <input tyep="text" name="考勤时间" id="csny">
+                        </td>
+                        <th>考勤类型</th>
+                        <td>
+                            <select name="考勤类型" id="kqlx" style="width:72%;">
+                                <option value="正常">正常</option>
+                                <option value="迟到">迟到</option>
+                                <option value="早退">早退</option>
+                                <option value="旷工">旷工</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>考勤备注</th>
+                        <td>
+                            <input tyep="text" name="考勤备注">
+                        </td>
+                        <th>
+                            <span style="color:red;">*</span>部门名称</th>
+                        <td>
+                            <input tyep="text" name="部门名称" required>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <button id="btn" class="btn btn-success"  style="margin: 10px;">保存</button>
+
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $("#csny").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+    });
+   
+
+    $('#btn').click(function () {
+        // console.log($('#formDemo').serializeJSON());
+        // console.log(JSON.stringify($('#formDemo').serializeJSON()));
+        // return JSON.stringify($('#formDemo').serializeJSON());
+
+        var storage = window.localStorage.getItem('kaoqin');
+        storage = storage ? JSON.parse(storage) : [];
+        storage.push($('#formDemo').serializeJSON());
+        console.log(storage)
+        window.localStorage.setItem('kaoqin', JSON.stringify(storage));
+        // alert('添加成功！');
+        window.close();
+        // self.opener.location.reload();
+        opener.loadXMLDoc(3)
+        //         // var parentWin = window.opener; //获取父窗口
+        // parent.document.getElementById('dagl').click; 
+        //         $(selector, window.parent.document);
+        //         $(".menu h2:eq(0)").click;
+
+    });
+</script>
+
+<style>
+    body {
+        margin: 10px;
+        background: url(../img/bg2.jpg);
+        background-size: cover;
+    }
+    .box {
+        width: 50%;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.97);
+        padding: 10px;
+        border-radius: 5px;
+    }
+    table{
+        width: 100%;
+
+    }
+</style>

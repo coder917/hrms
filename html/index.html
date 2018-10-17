@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../img/人事.png">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <title>人事管理系统</title>
+</head>
+
+<body>
+  <h2 class="title">人事管理系统</h2>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">用户名</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" placeholder="请输入用户名">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname" class="col-sm-2 control-label">密码</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="pass" placeholder="请输入密码">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">请记住我
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn btn-default" onclick="window.location.href='home.html'">登录</button>
+      </div>
+    </div>
+  </form>
+</body>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+
+</html>
+<style>
+
+  body{
+    background: beige;
+    background: url(../img/bg2.jpg);
+    background-size: cover;
+  }
+  .form-horizontal {
+    height: 280px;
+    width: 43%;
+    margin: auto;
+    margin-top: 100px;
+  }
+  .title{
+    text-align: center;
+    margin-top: 30px;
+  }
+</style>

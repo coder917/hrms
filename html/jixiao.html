@@ -1,0 +1,98 @@
+<div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-md-3">
+        <ul class="nav nav-list well">
+          <li class="nav-header">
+            广东工业大学
+          </li>
+          <li class="divider"></li>
+          <li class="nav-header">
+            单位（党政、群团、后勤）
+          </li>
+          <li>
+            <a href="#">人事处</a>
+          </li>
+          <li>
+            <a href="#">财务处</a>
+          </li>
+          <li>
+            <a href="#">教务处</a>
+          </li>
+          <li>
+            <a href="#">后勤部</a>
+          </li>
+          <!-- <li>
+            <a href="#">招生办</a>
+          </li> -->
+          <li>
+            <a href="#">宣传部</a>
+          </li>
+          <li class="nav-header">
+            单位（教学、研究、教辅）
+          </li>
+          <li>
+            <a href="#">机电工程学院</a>
+          </li>
+          <li>
+            <a href="#">自动化学院</a>
+          </li>
+          <!-- <li>
+            <a href="#">轻工化工学院</a>
+          </li> -->
+          <li>
+            <a href="#">信息工程学院</a>
+          </li>
+          <li>
+            <a href="#">土木与交通工程学院</a>
+          </li>
+          <li>
+            <a href="#">管理学院</a>
+          </li>
+          <li>
+            <a href="#">计算机学院</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <form class="form-search">
+          <input class="input-medium search-query" type="text" />
+          <button type="submit" class="btn btn-primary">查找</button>
+          <a href="jxjia.html" target="_blank">
+            <button type="button" class="btn btn-primary">增加</button>
+          </a>
+
+        </form>
+        <table class="table" id="tr" style="text-align: center;">
+          <tr>
+            <td>序号</td>
+            <!-- <td>选择</td> -->
+            <td>工号</td>
+            <td>姓名</td>
+            <td>考核成绩</td>
+            <td>考核等级</td>
+            <td>考核时间</td>
+            <td>操作</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">删除后将无法恢复，确认要删除吗？</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" onclick="deletep()">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal -->
+</div>
